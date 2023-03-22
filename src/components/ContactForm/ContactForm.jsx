@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createContact } from '../../redux/actions';
+import { createContact } from '../../redux/slice';
 import { Store } from 'react-notifications-component';
 import Input from '../Input/Input';
 import styles from '../ContactForm/ContactForm.module.css';

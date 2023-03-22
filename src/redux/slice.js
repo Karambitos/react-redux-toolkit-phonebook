@@ -1,9 +1,9 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { createReducer } from '@reduxjs/toolkit';
-import { createContact, deliteContact, filterContact } from './actions';
 
-export const rootReducer = createReducer(
-  {
+export const contactBookSlise = createSlice({
+  name: 'contact',
+  initialState: {
     contacts: [
       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -12,21 +12,26 @@ export const rootReducer = createReducer(
     ],
     filters: '',
   },
-  {
-    [createContact]: (state, action) => {
+  reducers: {
+    createContact(state, action) {
       state.contacts.unshift({
         id: uuidv4(),
         name: action.payload.name,
         number: action.payload.number,
       });
     },
-    [deliteContact]: (state, action) => {
+    deliteContact(state, action) {
       state.contacts = state.contacts.filter(
         contact => contact.id !== action.payload
       );
     },
-    [filterContact]: (state, action) => {
+    filterContact(state, action) {
       state.filters = action.payload;
     },
-  }
-);
+  },
+});
+
+export const { createContact, deliteContact, filterContact } =
+  contactBookSlise.actions;
+
+export const contactReducer = contactBookSlise.reducer;

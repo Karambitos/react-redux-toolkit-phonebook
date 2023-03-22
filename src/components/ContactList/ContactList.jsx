@@ -1,4 +1,4 @@
-import { deliteContact } from '../../redux/actions';
+import { deliteContact } from '../../redux/slice';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from '../ContactList/ContactList.module.css';
 
