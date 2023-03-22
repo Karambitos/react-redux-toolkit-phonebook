@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { createContact } from '../../redux/actions';
+import { Store } from 'react-notifications-component';
 import Input from '../Input/Input';
 import styles from '../ContactForm/ContactForm.module.css';
 
@@ -14,6 +14,22 @@ export default function ContactForm() {
     number: '',
   });
 
+  const addNotification = () => {
+    Store.addNotification({
+      title: 'Warning',
+      message: 'This name or number already exists.',
+      type: 'warning',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animate__animated', 'animate__fadeIn'],
+      animationOut: ['animate__animated', 'animate__fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true,
+      },
+    });
+  };
+
   const contactExists = (fieldName, fieldValue) => {
     return contacts.some(contact => contact[fieldName] === fieldValue);
   };
@@ -24,12 +40,10 @@ export default function ContactForm() {
       contactExists('name', formState.name) ||
       contactExists('number', formState.number)
     ) {
-      alert('This name or number already exists.');
+      addNotification();
       return;
     }
-
-    const newContact = { id: uuidv4(), ...formState };
-    dispatch(createContact(newContact));
+    dispatch(createContact(formState));
     reset();
   };
 
