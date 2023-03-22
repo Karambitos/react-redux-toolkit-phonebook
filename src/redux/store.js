@@ -10,11 +10,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
+
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: 'root',
+  key: 'contacts',
   storage,
 };
 
