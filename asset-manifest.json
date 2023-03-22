@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-redux-toolkit-phonebook/static/css/main.4be079af.css",
+    "main.js": "/react-redux-toolkit-phonebook/static/js/main.cad24560.js",
+    "index.html": "/react-redux-toolkit-phonebook/index.html",
+    "main.4be079af.css.map": "/react-redux-toolkit-phonebook/static/css/main.4be079af.css.map",
+    "main.cad24560.js.map": "/react-redux-toolkit-phonebook/static/js/main.cad24560.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4be079af.css",
+    "static/js/main.cad24560.js"
+  ]
+}
