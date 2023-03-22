@@ -9,7 +9,7 @@ export default function ContactForm() {
   const { contacts } = useSelector(state => state);
   const dispatch = useDispatch();
 
-  const [formState, setFormState] = useState({
+  const [newContact, setnewContact] = useState({
     name: '',
     number: '',
   });
@@ -18,7 +18,7 @@ export default function ContactForm() {
     Store.addNotification({
       title: 'Warning',
       message: 'This name or number already exists.',
-      type: 'warning',
+      type: 'danger',
       insert: 'top',
       container: 'top-right',
       animationIn: ['animate__animated', 'animate__fadeIn'],
@@ -37,19 +37,19 @@ export default function ContactForm() {
   const handleSubmit = event => {
     event.preventDefault();
     if (
-      contactExists('name', formState.name) ||
-      contactExists('number', formState.number)
+      contactExists('name', newContact.name) ||
+      contactExists('number', newContact.number)
     ) {
       addNotification();
       return;
     }
-    dispatch(createContact(formState));
+    dispatch(createContact(newContact));
     reset();
   };
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
-    setFormState(prevState => {
+    setnewContact(prevState => {
       return {
         ...prevState,
         [name]: value,
@@ -58,12 +58,12 @@ export default function ContactForm() {
   };
 
   const reset = () => {
-    setFormState({ name: '', number: '' });
+    setnewContact({ name: '', number: '' });
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <Input state={formState} handleInputChange={handleInputChange} />
+      <Input state={newContact} handleInputChange={handleInputChange} />
       <button className={styles.button} type="submit">
         Add Contact
       </button>

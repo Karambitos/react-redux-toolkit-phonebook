@@ -1,12 +1,11 @@
 .label{
     display: block;
-    margin: 20px 10px;
+    margin: 20px;
     font-size: 20px;
 }
 .input{
     margin-left: 10px;
     box-sizing: border-box;
-    margin-bottom: 20px;
     padding: 10px;
     font-size: 20px;
 }

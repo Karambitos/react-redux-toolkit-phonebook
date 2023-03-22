@@ -1,6 +1,8 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
+  background-color: #908c8c;
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,7 +18,6 @@ code {
 
 
 .main {
-  background-color: #141414;
   color: #fff;
   max-width: 600px;
   margin: 2rem auto;
