@@ -1,33 +1,27 @@
-import { deliteContact } from '../../redux/slice';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from '../ContactList/ContactList.module.css';
+import { selectContacts } from 'redux/selectors';
+import { deleteContact } from 'redux/operations';
 
 export default function ContactList() {
-  const { contacts, filters } = useSelector(state => state);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const getFilterContacts = () => {
-    const normalizedFilter = filters.toLowerCase();
-    return contacts.filter(
-      contact =>
-        contact.name.toLowerCase().includes(normalizedFilter) ||
-        contact.number.toLowerCase().includes(normalizedFilter)
-    );
-  };
-
-  const filterContacts = getFilterContacts();
-
-  return (
+  return contacts.length ? (
     <ul className={styles.contactList}>
-      {filterContacts.map(({ id, name, number }) => {
+      {contacts.map(({ id, name, number }) => {
         return (
           <li className={styles.contactItem} key={id}>
             <p>{name}</p>
             <p>{number}</p>
-            <button onClick={() => dispatch(deliteContact(id))}>Delete</button>
+            <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
           </li>
         );
       })}
     </ul>
+  ) : (
+    <div className="container-detail">
+      <h2>There are no matching contacts...</h2>
+    </div>
   );
 }

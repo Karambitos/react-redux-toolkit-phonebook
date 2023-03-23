@@ -1,43 +1,57 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { fetchContacts, deleteContact, addContact } from './operations';
 
 export const contactBookSlise = createSlice({
   name: 'contact',
   initialState: {
-    contacts: [],
+    contacts: {
+      items: [],
+      isLoading: false,
+      error: null,
+    },
     filters: '',
+    checked: false,
   },
-  // initialState: {
-  //   contacts: {
-  //     items: [],
-  //     isLoading: false,
-  //     error: null
-  //   },
-  //   filter: ""
-  // },
   reducers: {
-    initContacts(state, action) {
-      state.contacts = action.payload;
-    },
-    createContact(state, action) {
-      state.contacts.unshift({
-        id: uuidv4(),
-        name: action.payload.name,
-        number: action.payload.number,
-      });
-    },
-    deliteContact(state, action) {
-      state.contacts = state.contacts.filter(
-        contact => contact.id !== action.payload
-      );
-    },
     filterContact(state, action) {
       state.filters = action.payload;
     },
+    setChecked: (state, action) => {
+      state.checked = !state.checked;
+    },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.contacts.items = action.payload;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {})
+      .addCase(deleteContact.fulfilled, (state, action) => {})
+
+      .addMatcher(
+        action => action.type.endsWith('/pending'),
+        (state, action) => {
+          state.contacts.isLoading = true;
+          state.contacts.error = null;
+        }
+      )
+      .addMatcher(
+        action => action.type.endsWith('/rejected'),
+        (state, action) => {
+          state.contacts.isLoading = false;
+          state.contacts.error = action.payload;
+        }
+      )
+      .addMatcher(
+        action => action.type.endsWith('/fulfilled'),
+        (state, action) => {
+          state.contacts.isLoading = false;
+          state.contacts.error = null;
+        }
+      );
   },
 });
 
-export const { createContact, deliteContact, filterContact, initContacts } =
-  contactBookSlise.actions;
+export const { filterContact, setChecked } = contactBookSlise.actions;
 
 export const contactReducer = contactBookSlise.reducer;

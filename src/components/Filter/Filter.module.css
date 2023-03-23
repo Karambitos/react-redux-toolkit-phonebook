@@ -1,12 +1,23 @@
-.label{
-    display: block;
-    margin: 20px;
-    font-size: 20px;
-}
-.input{
-    margin-left: 10px;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 20px;
+.filterWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
+.label{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+.input{
+    box-sizing: border-box;
+    width: 100%;
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 20px;
+
+    border: 2px solid #333;
+    border-radius: 5px;
+    color: #333;
+}

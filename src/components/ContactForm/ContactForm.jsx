@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createContact } from '../../redux/slice';
 import { Store } from 'react-notifications-component';
 import Input from '../Input/Input';
 import styles from '../ContactForm/ContactForm.module.css';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 
 export default function ContactForm() {
-  const { contacts } = useSelector(state => state);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-
   const [newContact, setnewContact] = useState({
     name: '',
     number: '',
@@ -43,7 +43,7 @@ export default function ContactForm() {
       addNotification();
       return;
     }
-    dispatch(createContact(newContact));
+    dispatch(addContact(newContact));
     reset();
   };
 
