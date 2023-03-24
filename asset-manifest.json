@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-redux-toolkit-phonebook/static/css/main.8d7285e7.css",
-    "main.js": "/react-redux-toolkit-phonebook/static/js/main.bc03f6e1.js",
+    "main.css": "/react-redux-toolkit-phonebook/static/css/main.a7aa7e63.css",
+    "main.js": "/react-redux-toolkit-phonebook/static/js/main.7a6dc3e5.js",
     "index.html": "/react-redux-toolkit-phonebook/index.html",
-    "main.8d7285e7.css.map": "/react-redux-toolkit-phonebook/static/css/main.8d7285e7.css.map",
-    "main.bc03f6e1.js.map": "/react-redux-toolkit-phonebook/static/js/main.bc03f6e1.js.map"
+    "main.a7aa7e63.css.map": "/react-redux-toolkit-phonebook/static/css/main.a7aa7e63.css.map",
+    "main.7a6dc3e5.js.map": "/react-redux-toolkit-phonebook/static/js/main.7a6dc3e5.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d7285e7.css",
-    "static/js/main.bc03f6e1.js"
+    "static/css/main.a7aa7e63.css",
+    "static/js/main.7a6dc3e5.js"
   ]
 }
