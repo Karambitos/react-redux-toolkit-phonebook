@@ -6,6 +6,7 @@ import { deleteContact } from 'redux/operations';
 export default function ContactList() {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  console.log('list');
 
   return contacts.length ? (
     <ul className={styles.contactList}>

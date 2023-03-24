@@ -24,6 +24,7 @@ export const contactBookSlise = createSlice({
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.contacts.items = action.payload;
+        state.contacts.items.reverse();
       })
       .addCase(addContact.fulfilled, (state, action) => {})
       .addCase(deleteContact.fulfilled, (state, action) => {})

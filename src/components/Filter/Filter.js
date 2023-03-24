@@ -6,6 +6,7 @@ import { selectFilter } from 'redux/selectors';
 export default function Filter() {
   const filters = useSelector(selectFilter);
   const dispatch = useDispatch();
+  console.log('filter');
 
   return (
     <div className={styles.filterWrapper}>

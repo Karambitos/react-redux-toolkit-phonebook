@@ -19,7 +19,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <div className={`${checked ? 'main' : 'main dark'}`}>
+      <div className={`main ${!checked ? 'dark' : ''}`}>
         <div className="contentMaxWidth">
           <h1>Phonebook</h1>
           <ContactForm />
