@@ -1,6 +1,7 @@
 import Checkbox from '../Checkbox/Checkbox';
 import { setChecked } from '../../redux/slice';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -21,7 +22,14 @@ export default function Header() {
               dispatch(setChecked(event.target.checked))
             }
           />
-          <span>Login</span>
+          <nav>
+            <NavLink className="nav-link" to="/" end>
+              Login
+            </NavLink>
+            <NavLink className="nav-link" to="/login">
+              Logout
+            </NavLink>
+          </nav>
         </div>
       </div>
     </header>

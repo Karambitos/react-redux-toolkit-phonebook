@@ -1,46 +1,23 @@
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
-import ContactForm from './ContactForm/ContactForm';
-import Header from './Header/Header';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
+import { useSelector } from 'react-redux';
 import { selectCheckbox, selectIsLoading } from 'redux/selectors';
-import { FallingLines } from 'react-loader-spinner';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
+import NotFound from '../pages/NotFound';
+import Layout from '../components/Layout/Layout';
 
 export default function App() {
   const checked = useSelector(selectCheckbox);
-  const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
 
   return (
     <div className="mainWrapper" data-theme={`${!checked ? 'dark' : 'light'}`}>
-      <Header />
-      <div className="contentMaxWidth">
-        <div className="row">
-          <h1>Phonebook</h1>
-          <ContactForm />
-          {isLoading ? (
-            <FallingLines
-              wrapperClass="spiner"
-              wrapperStyle={{ width: '20px' }}
-              color="#e50914"
-              width="100"
-              visible={true}
-              ariaLabel="falling-lines-loading"
-            />
-          ) : (
-            <>
-              <h2>Contacts</h2>
-              <Filter />
-              <ContactList />
-            </>
-          )}
-        </div>
-      </div>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

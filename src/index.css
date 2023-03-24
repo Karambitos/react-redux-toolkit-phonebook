@@ -52,7 +52,7 @@ code {
 
 .navGrupe{
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -64,6 +64,24 @@ code {
 a, p,
 h1,h2,h3,h4,h5,h6 {
   color: inherit;
+}
+
+.nav-link{
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 300ms;
+} 
+
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus,
+.nav-link.active{
+  color: #e50914;
+}
+
+.nav-link:not(:last-child){
+  margin-right: 10px;
 }
 
 .logoLink{
@@ -80,7 +98,6 @@ h1,h2,h3,h4,h5,h6 {
   outline: none;
 }
 
-
 .theme{
   position: relative;
 }
@@ -89,7 +106,8 @@ h1,h2,h3,h4,h5,h6 {
 .theme:after {
   height: 20px;
   width: 20px;
-  top: 2px;
+  font-size: 16px;
+  top: 3px;
   position: absolute;
 }
 
