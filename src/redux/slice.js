@@ -27,7 +27,11 @@ export const contactBookSlise = createSlice({
         state.contacts.items.reverse();
       })
       .addCase(addContact.fulfilled, (state, action) => {})
-      .addCase(deleteContact.fulfilled, (state, action) => {})
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.contacts.items = state.contacts.items.filter(
+          contact => contact.id !== action.payload
+        );
+      })
 
       .addMatcher(
         action => action.type.endsWith('/pending'),

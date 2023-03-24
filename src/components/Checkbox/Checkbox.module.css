@@ -6,33 +6,39 @@
 }
 
 .inputBox{
-    margin-left: 10px;
 
 }
 
 .checkbox {
-    width: 60px;
-    height: 30px;
-    transition: .4s;
-    background: #fff;
+    border-radius: 30px;
+    height: 24px;
+    transition: .2s;
+    width: 50px;
+    background-color: #4d4d4d;
     position: relative;
-    border-radius: 20px;
     cursor: pointer;
 }
 
 .checkboxCircle {
-    transition: .4s;
-    display: block;
+    background-color: #fafafa;
+    border: 1px solid #4d4d4d;
     border-radius: 50%;
-    height: 20px; 
-    width: 20px;
-    background-color: #e50914;
+    height: 22px;
+    width: 22px;
+    transition: .25s;
     position: absolute;
     top: 50%;
     transform: translatey(-50%);
     left: 5%;
+    z-index: 2;
+}
+
+.checkboxCircle:hover{
+    box-shadow: 0px 0px 2px 2px #e50914;
 }
   
 .active  .checkboxCircle{
-    left: calc(95% - 20px);
+    left: calc(95% - 22px);
 }
+
+

@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Store } from 'react-notifications-component';
-import Input from '../Input/Input';
+import Input from './Input/Input';
 import styles from '../ContactForm/ContactForm.module.css';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts, selectIsLoading } from 'redux/selectors';
 import { addContact } from 'redux/operations';
 
 export default function ContactForm() {
+  const isLoading = useSelector(selectIsLoading);
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-  console.log('form');
   const [newContact, setnewContact] = useState({
     name: '',
     number: '',
@@ -37,6 +37,7 @@ export default function ContactForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (isLoading) return;
     if (
       contactExists('name', newContact.name) ||
       contactExists('number', newContact.number)
@@ -65,7 +66,7 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <Input state={newContact} handleInputChange={handleInputChange} />
-      <button className={styles.button} type="submit">
+      <button type="submit" disabled={isLoading}>
         Add Contact
       </button>
     </form>

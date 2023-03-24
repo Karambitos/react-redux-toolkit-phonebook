@@ -35,8 +35,17 @@ export const deleteContact = createAsyncThunk(
     try {
       await axios.delete(`/contacts/${id}`);
       dispatch(fetchContacts());
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const loading = getState().contacts.isLoading;
+      if (loading) {
+        return false;
+      }
+    },
   }
 );

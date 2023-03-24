@@ -17,10 +17,10 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="mainWrapper" data-theme={`${!checked ? 'dark' : 'light'}`}>
       <Header />
-      <div className={`main ${!checked ? 'dark' : ''}`}>
-        <div className="contentMaxWidth">
+      <div className="contentMaxWidth">
+        <div className="row">
           <h1>Phonebook</h1>
           <ContactForm />
           {isLoading ? (
@@ -41,6 +41,6 @@ export default function App() {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

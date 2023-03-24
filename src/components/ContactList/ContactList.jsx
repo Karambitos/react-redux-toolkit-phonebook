@@ -2,11 +2,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from '../ContactList/ContactList.module.css';
 import { selectContacts } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
+import SVGComponent from '../../assets/DeleteIcon';
 
 export default function ContactList() {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-  console.log('list');
 
   return contacts.length ? (
     <ul className={styles.contactList}>
@@ -15,7 +15,9 @@ export default function ContactList() {
           <li className={styles.contactItem} key={id}>
             <p>{name}</p>
             <p>{number}</p>
-            <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
+            <button onClick={() => dispatch(deleteContact(id))}>
+              <SVGComponent />
+            </button>
           </li>
         );
       })}
