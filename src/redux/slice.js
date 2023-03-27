@@ -4,6 +4,11 @@ import { fetchContacts, deleteContact, addContact } from './operations';
 export const contactBookSlise = createSlice({
   name: 'contact',
   initialState: {
+    user: {
+      name: null,
+      email: null,
+      token: null,
+    },
     contacts: {
       items: [],
       isLoading: false,
