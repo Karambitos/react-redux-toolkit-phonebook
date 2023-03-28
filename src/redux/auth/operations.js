@@ -70,6 +70,3 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-
-// saddsaduserTest3@gmail.com
-// dmytro123456@gmail.com

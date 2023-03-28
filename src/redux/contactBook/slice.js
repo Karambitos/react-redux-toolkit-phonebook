@@ -5,13 +5,7 @@ export const contactBookSlise = createSlice({
   name: 'contact',
   initialState: {
     contacts: {
-      items: [
-        {
-          id: '',
-          name: '',
-          number: '',
-        },
-      ],
+      items: [],
       isLoading: false,
       error: null,
     },
@@ -19,6 +13,9 @@ export const contactBookSlise = createSlice({
     checked: false,
   },
   reducers: {
+    resetContacts(state, action) {
+      state.contacts.items = [];
+    },
     filterContact(state, action) {
       state.filters = action.payload;
     },
@@ -29,31 +26,20 @@ export const contactBookSlise = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        if (action.payload.length > 0) {
-          state.contacts.items = action.payload;
-        }
+        state.contacts.items = action.payload;
         state.contacts.items.reverse();
       })
-      .addCase(fetchContacts.rejected, (state, action) => {
-        state.contacts.items = [
-          {
-            id: '4915118515681',
-            name: 'Dmytro Pasichnyk',
-            number: '+4915118515681',
-          },
-        ];
-      })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.contacts.items.unshift({
-          id: action.payload.id,
-          name: action.payload.name,
-          number: action.payload.number,
-        });
+        // state.contacts.items.unshift({
+        //   id: action.payload.id,
+        //   name: action.payload.name,
+        //   number: action.payload.number,
+        // });
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.contacts.items = state.contacts.items.filter(
-          contact => contact.id !== action.payload
-        );
+        // state.contacts.items = state.contacts.items.filter(
+        //   contact => contact.id !== action.payload
+        // );
       })
       .addMatcher(
         action => action.type.endsWith('/pending'),
@@ -79,6 +65,7 @@ export const contactBookSlise = createSlice({
   },
 });
 
-export const { filterContact, setChecked } = contactBookSlise.actions;
+export const { filterContact, setChecked, resetContacts } =
+  contactBookSlise.actions;
 
 export const contactReducer = contactBookSlise.reducer;

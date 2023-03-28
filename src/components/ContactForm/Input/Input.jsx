@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 export default function Input({ state, handleInputChange }) {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <div>
       <label className="label" htmlFor="name">
         Name:
       </label>
       <input
+        disabled={!isLoggedIn}
         className="input"
         type="text"
         name="name"
@@ -20,6 +25,7 @@ export default function Input({ state, handleInputChange }) {
         Number:
       </label>
       <input
+        disabled={!isLoggedIn}
         className="input"
         type="text"
         name="number"
