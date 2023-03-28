@@ -40,7 +40,6 @@ export default function App() {
   useEffect(() => {
     if (!error) return;
     addNotification(error);
-    console.log(error);
   }, [error]);
 
   return (

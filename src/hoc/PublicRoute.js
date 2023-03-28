@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 export const PublicRoute = ({ children }) => {
   const location = useLocation();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log(isLoggedIn);
 
   if (isLoggedIn) {
     return <Navigate to="/" state={{ from: location }} />;
