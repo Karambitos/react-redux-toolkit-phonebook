@@ -4,13 +4,14 @@ import { fetchContacts, deleteContact, addContact } from './operations';
 export const contactBookSlise = createSlice({
   name: 'contact',
   initialState: {
-    user: {
-      name: null,
-      email: null,
-      token: null,
-    },
     contacts: {
-      items: [],
+      items: [
+        {
+          id: '',
+          name: '',
+          number: '',
+        },
+      ],
       isLoading: false,
       error: null,
     },
@@ -28,8 +29,20 @@ export const contactBookSlise = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.contacts.items = action.payload;
+        if (action.payload.length > 0) {
+          state.contacts.items = action.payload;
+        }
         state.contacts.items.reverse();
+      })
+      // TODO: when I refresh I need update contact items (fetchContacts) to initial State
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.contacts.items = [
+          {
+            id: '4915118515681',
+            name: 'Dmytro Pasichnyk',
+            number: '+4915118515681',
+          },
+        ];
       })
       .addCase(addContact.fulfilled, (state, action) => {})
       .addCase(deleteContact.fulfilled, (state, action) => {
@@ -37,7 +50,6 @@ export const contactBookSlise = createSlice({
           contact => contact.id !== action.payload
         );
       })
-
       .addMatcher(
         action => action.type.endsWith('/pending'),
         (state, action) => {

@@ -1,5 +1,12 @@
+import { LogInForm } from 'components/LogInForm/LogInForm';
+
 const Login = () => {
-  return <h1>LOGIN PAGE</h1>;
+  return (
+    <div className="innerWrapper">
+      <h1>Login Form</h1>
+      <LogInForm />
+    </div>
+  );
 };
 
 export default Login;

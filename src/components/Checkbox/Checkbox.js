@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectCheckbox } from 'redux/selectors';
+import { selectContactsCheckbox } from 'redux/contactBook/selectors';
 import styles from './Checkbox.module.css';
 
 export default function Checkbox({
@@ -7,7 +7,7 @@ export default function Checkbox({
   className = '',
   title = '',
 }) {
-  const checked = useSelector(selectCheckbox);
+  const checked = useSelector(selectContactsCheckbox);
 
   return (
     <label className={styles.label}>
@@ -15,11 +15,11 @@ export default function Checkbox({
       <input
         type="checkbox"
         checked={checked}
+        onClick={handleCheckboxChange}
         className="visually-hidden"
         readOnly
       />
       <div
-        onClick={handleCheckboxChange}
         className={`${styles.checkbox} ${
           checked ? styles.active : ''
         } ${className}`}

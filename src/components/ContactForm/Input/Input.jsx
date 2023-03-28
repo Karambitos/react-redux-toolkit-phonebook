@@ -1,14 +1,13 @@
-import styles from '../Input/Input.module.css';
 import PropTypes from 'prop-types';
 
 export default function Input({ state, handleInputChange }) {
   return (
     <div>
-      <label className={styles.label} htmlFor="name">
+      <label className="label" htmlFor="name">
         Name:
       </label>
       <input
-        className={styles.input}
+        className="input"
         type="text"
         name="name"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagna"
@@ -17,11 +16,11 @@ export default function Input({ state, handleInputChange }) {
         value={state.name}
         onChange={handleInputChange}
       />
-      <label className={styles.label} htmlFor="number">
+      <label className="label" htmlFor="number">
         Number:
       </label>
       <input
-        className={styles.input}
+        className="input"
         type="text"
         name="number"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

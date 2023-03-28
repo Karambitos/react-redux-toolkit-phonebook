@@ -67,11 +67,17 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .nav-link{
+  display: inline-block;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
   transition: color 300ms;
 } 
+
+.nav-button{
+  display: inline-block;
+
+}
 
 .nav-link:hover,
 .nav-link:active,
@@ -119,6 +125,14 @@ h1,h2,h3,h4,h5,h6 {
 .theme:after{
   content: '🌛';
   right: 2px;
+}
+
+.info {
+  text-align: center;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #e50914;
 }
 
 
@@ -188,7 +202,7 @@ button:disabled{
   opacity: 0.6;
 }
 
-.row {
+.innerWrapper {
   max-width: 580px;
   margin: 0 auto;
 }
@@ -197,4 +211,29 @@ button:disabled{
   .logoLink {
     font-size: 1.5em;
   }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.label {
+  display: block;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid #333;
+  border-radius: 5px;
+  color: #333;
 }

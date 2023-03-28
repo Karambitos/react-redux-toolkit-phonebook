@@ -2,12 +2,16 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Store } from 'react-notifications-component';
 import Input from './Input/Input';
-import styles from '../ContactForm/ContactForm.module.css';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import {
+  selectContacts,
+  selectContactsIsLoading,
+} from 'redux/contactBook/selectors';
+import { addContact } from 'redux/contactBook/operations';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 
 export default function ContactForm() {
-  const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectContactsIsLoading);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const [newContact, setnewContact] = useState({
@@ -64,11 +68,16 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit} className="form">
       <Input state={newContact} handleInputChange={handleInputChange} />
-      <button type="submit" disabled={isLoading}>
+      <button type="submit" disabled={isLoading || !isLoggedIn}>
         Add Contact
       </button>
+      {!isLoggedIn && (
+        <p className="info">
+          To add a new contact - please login to your account
+        </p>
+      )}
     </form>
   );
 }
