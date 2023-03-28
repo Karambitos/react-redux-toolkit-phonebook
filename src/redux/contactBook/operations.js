@@ -30,8 +30,12 @@ export const addContact = createAsyncThunk(
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
     try {
-      await axios.post('/contacts', { ...contact }, persistedToken);
-      dispatch(fetchContacts());
+      const response = await axios.post(
+        '/contacts',
+        { ...contact },
+        persistedToken
+      );
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

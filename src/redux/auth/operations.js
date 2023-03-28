@@ -73,4 +73,3 @@ export const refreshUser = createAsyncThunk(
 
 // saddsaduserTest3@gmail.com
 // dmytro123456@gmail.com
-// "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDIxOTQ0OWI1NWRiMjAwMTQ4YTBhMjEiLCJpYXQiOjE2Nzk5MjIyNDl9.oc49L5GRvHPs1jN7b-BPQ9SQIkl0QbBLAEEhcio-Vdk"

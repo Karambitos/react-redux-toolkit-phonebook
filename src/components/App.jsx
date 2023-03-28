@@ -9,12 +9,14 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import NotFound from '../pages/NotFound';
 import Layout from '../components/Layout/Layout';
-import { selectAuthError } from 'redux/auth/selectors';
+import { selectAuthError, selectAuthRefreshing } from 'redux/auth/selectors';
 import { PublicRoute } from 'hoc/PublicRoute';
 
 export default function App() {
   const checked = useSelector(selectContactsCheckbox);
+  const isRefreshing = useSelector(selectAuthRefreshing);
   const error = useSelector(selectAuthError);
+  const dispatch = useDispatch();
 
   const addNotification = () => {
     Store.addNotification({
@@ -32,7 +34,6 @@ export default function App() {
     });
   };
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, []);
@@ -43,29 +44,34 @@ export default function App() {
   }, [error]);
 
   return (
-    <div className="mainWrapper" data-theme={`${!checked ? 'dark' : 'light'}`}>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <Register />
-              </PublicRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </div>
+    !isRefreshing && (
+      <div
+        className="mainWrapper"
+        data-theme={`${!checked ? 'dark' : 'light'}`}
+      >
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <Register />
+                </PublicRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </div>
+    )
   );
 }

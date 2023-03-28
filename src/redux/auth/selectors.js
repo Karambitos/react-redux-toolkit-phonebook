@@ -8,3 +8,4 @@ export const selectIsLoggedIn = createSelector(
 );
 
 export const selectAuthError = state => state.auth.error;
+export const selectAuthRefreshing = state => state.auth.isRefreshing;

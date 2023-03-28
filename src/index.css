@@ -207,9 +207,16 @@ button:disabled{
   margin: 0 auto;
 }
 
+.navGrupe label{
+  display: none;
+}
 @media only screen and (min-width: 768px) {
   .logoLink {
     font-size: 1.5em;
+  }
+
+  .navGrupe label{
+    display: block;
   }
 }
 

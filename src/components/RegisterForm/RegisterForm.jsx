@@ -1,25 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-// import { Store } from 'react-notifications-component';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
-
-  // const addNotification = () => {
-  //   Store.addNotification({
-  //     title: 'Warning',
-  //     message: 'This name or number already exists.',
-  //     type: 'danger',
-  //     insert: 'top',
-  //     container: 'top-right',
-  //     animationIn: ['animate__animated', 'animate__fadeIn'],
-  //     animationOut: ['animate__animated', 'animate__fadeOut'],
-  //     dismiss: {
-  //       duration: 3000,
-  //       onScreen: true,
-  //     },
-  //   });
-  // };
 
   const handleSubmit = e => {
     e.preventDefault();

@@ -34,7 +34,6 @@ export const contactBookSlise = createSlice({
         }
         state.contacts.items.reverse();
       })
-      // TODO: when I refresh I need update contact items (fetchContacts) to initial State
       .addCase(fetchContacts.rejected, (state, action) => {
         state.contacts.items = [
           {
@@ -44,7 +43,13 @@ export const contactBookSlise = createSlice({
           },
         ];
       })
-      .addCase(addContact.fulfilled, (state, action) => {})
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.contacts.items.unshift({
+          id: action.payload.id,
+          name: action.payload.name,
+          number: action.payload.number,
+        });
+      })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.contacts.items = state.contacts.items.filter(
           contact => contact.id !== action.payload
